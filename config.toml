@@ -5,6 +5,9 @@ theme = "kiss"
 # Number of posts per page
 Paginate = 5
 enableRobotsTXT = true
+publishdir = "deurell.github.io"
+
+
 
 [params.rss]
 

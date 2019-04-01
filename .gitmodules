@@ -1,3 +1,6 @@
 [submodule "themes/kiss"]
 	path = themes/kiss
 	url = https://github.com/ribice/kiss.git
+[submodule "deurell.github.io"]
+	path = deurell.github.io
+	url = git@github.com:deurell/deurell.github.io.git
