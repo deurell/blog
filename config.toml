@@ -1,4 +1,4 @@
-baseurl = "https://www.example.com"
+baseurl = "https://deurell.github.io"
 languageCode = "en"
 title = "Depeche Node++"
 theme = "kiss"
