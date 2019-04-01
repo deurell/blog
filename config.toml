@@ -1,0 +1,30 @@
+baseurl = "https://www.example.com"
+languageCode = "en"
+title = "Depeche Node++"
+theme = "kiss"
+# Number of posts per page
+Paginate = 5
+enableRobotsTXT = true
+
+[params.rss]
+
+includeContent = true # Includes whole content in rss
+authorName = "Mikael Deurell" # Site author's full name
+authorEmail = "dev@deurell.net"
+
+[params.info]
+homeTitle = "Depeche Node++" # Title for home page
+
+[params.social]
+
+twitter = "deurell"
+github = "deurell"
+email = "dev@deurell.net"
+linkedin = "deurell"
+
+[params.social.config]
+platforms = ["twitter","github","email","linkedin"]
+
+[taxonomies]
+tag ="tags"
+
