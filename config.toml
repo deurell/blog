@@ -1,6 +1,6 @@
 baseurl = "https://deurell.github.io"
 languageCode = "en"
-title = "Depeche Node++"
+title = "Depeche Node"
 theme = "kiss"
 # Number of posts per page
 Paginate = 5
@@ -13,7 +13,7 @@ authorName = "Mikael Deurell" # Site author's full name
 authorEmail = "dev@deurell.net"
 
 [params.info]
-homeTitle = "Depeche Node++" # Title for home page
+homeTitle = "Depeche Node" # Title for home page
 
 [params.social]
 
