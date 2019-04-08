@@ -7,8 +7,6 @@ Paginate = 5
 enableRobotsTXT = true
 publishdir = "deurell.github.io"
 
-
-
 [params.rss]
 
 includeContent = true # Includes whole content in rss
