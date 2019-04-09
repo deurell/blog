@@ -12,7 +12,7 @@ Pico8 has the simplicity needed in order to show how everything fits together. G
 
 ![crazy comets game](/crazy_game.gif)
 
-The game is implemented as a simple state machine with objects handling the ship, comets, star field, camera, particles and missiles. It handles collision detection with a classic AABB bounding boxes and I'll come back some of the implementation in a future blog post. The game has a whopping total size of 11K. <3
+The game is implemented as a simple state machine with objects handling the ship, comets, star field, camera, particles and missiles. It handles collision detection with classic AABB bounding boxes and I'll come back some of the implementation in a future blog post. The game has a whopping total size of 11K. <3
 
 You can download the game with all source code as a cartridge here:
 
