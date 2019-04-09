@@ -4,7 +4,7 @@ date: 2019-04-08T22:45:00+02:00
 tags: [pico-8]
 ---
 
-Growing up I loved to play Crazy Comets on my C64. The magic startfield seemed almost impossible to code for a 14 year old and the music by Martin Galway totally blew me away. I decided to code a pico8 remake of it together with my 6 year old daugther in order to show her how to make games. We had a fantastic time! 
+Growing up I loved to play Crazy Comets on my C64. The magic starfield seemed almost impossible to code for a 14 year old and the music by Martin Galway totally blew me away. I decided to code a pico8 remake of it together with my 6 year old daugther in order to show her how to make games. We had a fantastic time! 
 
 ![crazy comets intro](/crazy_intro.gif)
 
@@ -12,7 +12,7 @@ Pico8 has the simplicity needed in order to show how everything fits together. G
 
 ![crazy comets game](/crazy_game.gif)
 
-The game is implemented as a simple state machine with objects handling the ship, comets, star field, camera and missiles. It handles collision detection with a classic AABB bounding boxes and I'll go through some of the implementation in upcoming blog posts. 
+The game is implemented as a simple state machine with objects handling the ship, comets, star field, camera, particles and missiles. It handles collision detection with a classic AABB bounding boxes and I'll come back some of the implementation in a future blog posts. 
 
 You can download the game with all source code as a cartridge here:
 
