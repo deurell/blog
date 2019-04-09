@@ -4,7 +4,7 @@ date: 2019-04-08T22:45:00+02:00
 tags: [pico-8]
 ---
 
-Growing up I loved to play Crazy Comets on my C64. The magic starfield seemed almost impossible to code for a 14 year old and the music by Martin Galway totally blew me away. I decided to code a pico8 remake of it together with my 6 year old daughter in order to show her how to make games. We had a fantastic time! 
+Growing up I loved to play Crazy Comets on my C64. The magic starfield seemed almost impossible to code for a 14 year old and the music by Rob Hubbard totally blew me away. I decided to code a pico8 remake of it together with my 6 year old daughter in order to show her how to make games. We had a fantastic time! 
 
 ![crazy comets intro](/crazy_intro.gif)
 
