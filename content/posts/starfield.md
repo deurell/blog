@@ -91,4 +91,6 @@ end
 
 And that's it. A star field project in PICO-8. It's a two hour session for a 14 year old including setting up pico-8, explaining basic Lua and writing the project. 
 
+Source code and cartridge is available here <https://www.lexaloffle.com/bbs/?tid=33840>
+
 PICO-8 is available from here <https://www.lexaloffle.com/pico-8.php>
