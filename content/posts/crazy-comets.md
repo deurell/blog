@@ -1,5 +1,5 @@
 ---
-title: "Crazy Comets in PICO-8"
+title: "Teaching kids game development with PICO-8"
 date: 2019-04-08T22:45:00+02:00
 tags: [pico-8]
 ---
