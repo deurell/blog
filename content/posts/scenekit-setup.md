@@ -3,9 +3,9 @@ title: "Setting up ShaderModifiers in SceneKit"
 date: 2019-04-12T18:45:31+02:00
 tags: [SceneKit, Shaders]
 ---
-I <3 the Metal shader debugger in XCode. It's one of those things that feels that they've been sent from the future. I've been doing shaders in OpenGL for years and years. The last five years I've been helping a nice Swedish game company to code casual games with a lot of Candy. And Crushes. More than once I've realized that the demos and shaders I did for fun in my teens are the very things that's putting food on the table for my kids over 100 years later. Well.. Almost 100 years later..
+I <3 the Metal shader debugger in XCode. It's one of those things that feels like they've been sent from the future. I've been doing shaders in OpenGL for years and years. The last five years I've been helping a nice Swedish game company to code casual games with a lot of Candy. And Crushes. More than once I've realized that the demos and shaders I did for fun in my teens are the very things that's putting food on the table for my kids over 100 years later. Well.. Almost 100 years later.
 
-After last years WWDC I downloaded the new XCode with the Metal debugger and. I was completely blown away! Writing shaders in Metal is like writing ordinary C++ 14 at work but without those pesky templates. Just the way I like C++! And the debugger. The debugger is better the my standard C++ debugger at work!
+After last years WWDC I downloaded the new XCode with the Metal debugger and. I was completely blown away! Writing shaders in Metal is like writing ordinary C++ 14 at work but without those pesky templates. Just the way I like C++! And the shader debugger. The shader debugger is better the my standard C++ debugger at work!
 
 I did a lot of face tracking app sessions with AR kit. Pretty much like this:
 
@@ -13,7 +13,7 @@ I did a lot of face tracking app sessions with AR kit. Pretty much like this:
 
 I wanted to have a quick shader lab environment without an iPhone and AR stuff but still work on the face tracking SceneKit shaders on the commute to work where I only have my laptop. The quickest setup was to do a simple plane geometry in SceneKit and hook up ShaderModifiers. 
 
-ShaderModifiers can be both vertex and fragment modifiers and hooks in to the standard SceneKit shader setup using pragmas. Pretty convenient, I use it all the time. So how do we set it up? 
+ShaderModifiers can be both vertex and fragment modifiers and are injected in to the standard SceneKit shader setup using pragmas. Pretty convenient, I use it all the time. So how do we set it up? 
 
 Create a standard MacOS app with a view and a ViewController, set up a SceneKit scene and hook up a shader modifier this way:
 
