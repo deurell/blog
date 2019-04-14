@@ -1,7 +1,6 @@
 ---
 title: "Recreating Beat Saber lazers with unicorns"
 date: 2019-04-14T15:56:27+02:00
-draft: true
 ---
 I've been coding professionally for over 20 years and I still learn new things every single day. One of the most fun and rewarding ways I use to get better is to recreate things in games I love. And I'm in love with so many games. It never ends. An endless, lovely, gamedev tutorial!
 
