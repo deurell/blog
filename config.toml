@@ -1,7 +1,7 @@
 baseurl = "https://deurell.github.io"
 languageCode = "en"
 title = "Deurell Labs"
-theme = "PaperMod"
+theme = "kiss"
 # Number of posts per page
 Paginate = 5
 enableRobotsTXT = true
