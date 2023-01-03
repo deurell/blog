@@ -100,6 +100,6 @@ class PlaneAnchorEntity: Entity, HasModel, HasAnchoring {
     }
 }
 ```
-The didUpdate function recreates the model surface mesh based on the provided ARAnchor plane size and follows the same pattern as described above. And that's it. We've rolled our own RealityKit Archor entity that can be added to the Scenes anchors array. They can host virtual objects as children and they also display a visualizing mesh using a ModelComponent. 
+The didUpdate function recreates the model surface mesh based on the provided ARAnchor plane size and follows the same pattern as described above. And that's it. We've rolled our own RealityKit Archor entity that can be added to the Scenes anchors array. They can host virtual objects as children and they also display a visualizing mesh using a ModelComponent. There are easier ways of doing anchors in RealityKit but they all use this underlying strategy behind the scenes so this helped me grok the anchor behaviors in RealityKit when I started out.
 
 All the code this blog post is based on is available [here](https://github.com/deurell/SurfaceDetection). Have an excellent AR dev day!
