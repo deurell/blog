@@ -4,7 +4,7 @@ date: 2023-01-03T17:23:40+01:00
 tags: [Swift, RealityKit]
 draft: true
 ---
-I've spent a lot of time learning and writing code based on RealityKit. I really like the framework. It's nicely written, has a lovely tiny, lightweight ECS implementation and makes writing AR applications and games pretty straightforward. That is if you're able to find some nice documentation or reference projects. That's not a super easy task, so I thought I'd write down some things I've learned that might help other AR devs out there in the wild.
+I've spent a lot of time learning and writing code based on RealityKit. I really like the framework. It's nicely written, has a lovely tiny, lightweight ECS implementation and makes writing AR applications and games pretty straightforward. I thought I'd write down some things I've learned that might help other AR devs out there in the wild.
 
 The first thing that comes up when writing a new RealityKit app is detecting surfaces in order to anchor virtual objects in the real world. RealityKit has several ways of doing this so I'm going to start there. My first take on this will be to use the way ARKit uses anchors with ARAnchor and show how it relates to anchors like AnchorEntity in RealityKit. Basically we'll roll our own RealityKit AnchorEntity.
 
@@ -40,7 +40,7 @@ func session(_ session: ARSession, didAdd anchors: [ARAnchor])
 func session(_ session: ARSession, didUpdate anchors: [ARAnchor])
 func session(_ session: ARSession, didRemove anchors: [ARAnchor])
 ```
-When the running ARSession finds new horizontal surfaces it'll call the didAdd method with an array of found surfaces/anchors. We'll keep track of the anchors and also update them along the way. As the ARSession finds out more about the surrounding world it'll modify the anchors/surfaces, merging them, moving, rotating or in other ways adapt them as the session learns more about the surrounding world. This is important to remember, they can change any time if we continue to run our ARSession. The update method will handle that. In this method we'll recreate the visulizing surface mesh for the found anchors or in other ways adapt them to the current world understanding. Making them better as we move along. The didRemove method handles removed surfaces, this could be a horizontal surface on a chair that has been moved to another location. In this case we'll remove the surface from our list and delete it.
+When the running ARSession finds new horizontal surfaces it'll call the didAdd method with an array of found surfaces/anchors. We'll keep track of the anchors and also update them along the way. As the ARSession finds out more about the surrounding world it'll modify the anchors/surfaces, merging them, moving, rotating or in other ways adapt them as the session learns more about the surrounding world. This is important to remember, they can change any time if we continue to run our ARSession. The update method will handle just that. In this method we'll recreate the visulizing surface mesh for the found anchors or in other ways adapt them to the current world understanding. Making them better align with the real world as we move along. The didRemove method handles removed surfaces, this could be a horizontal surface on a chair that has been moved to another location. In this case we'll remove the surface from our list and delete it.
 
 dictionary
 
