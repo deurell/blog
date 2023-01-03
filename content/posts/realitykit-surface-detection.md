@@ -1,0 +1,43 @@
+---
+title: "Realitykit Surface Detection"
+date: 2023-01-03T17:23:40+01:00
+tags: [Swift, RealityKit]
+draft: true
+---
+I've spent alot of time learing and writing code in RealityKit since last summer. I really like the framework. It's nicely written, has a lovely tiny, lightweight ECS implementation and makes writing AR applications and games pretty straightforward. That is if you find some nice documentation and reference projects. That's not super easy to do so I thought I'd write down things that I've learned that might help other devs out there in the wild.
+
+The first thing that comes up when writing a new RealityKit app is detecting surfaces in order to anchor virtual objects in the real world. RealityKit has several ways of doing this so I'm going to start there. My first take on this will be to use the way ARKit uses anchors with ARAnchor and show how it relates to anchors like AnchorEntity in RealityKit. We'll roll our own RealityKit AnchorEntity, a really nice learning experince.
+
+ Starting from ARKit and moving into RealityKit makes easier to understard how RealityKit has evolved over time. In both ARKit and RealityKit we need an ARSession to start with. This ARSession coordinates all the processes that are needed to create an AR experience. Camera control, image analysis and tracking to name a few. The ARSession feeds data to the different renderers like the RealityKit ARView, SceneKit's ARSCNView och SpriteKit's ARSKView. As we're using RealityKit we'll stick to ARView. 
+ 
+ In order to use ARViews from SwiftUI we need to wrap it in a classic UIViewRepresentable.
+```
+struct ARContainer: UIViewRepresentable {
+    func makeUIView(context: Context) -> DetectionView {
+        let arView = DetectionView(frame: .zero)
+        arView.setup()
+        return arView
+    }
+    func updateUIView(_ uiView: DetectionView, context: Context) {}
+}
+```
+In this case the DetectionView inherits from ARView and is the view that will register as a delegate for the ARSession callbacks.
+
+ The ARSession also lets us know when it detects surfaces. We'll use those surfaces to create our anchors. The anchors we find will root our virtual objects in the real world.
+ ```
+/// Start ARSession and setup self as delegate.
+private func setupARSession() {
+        let session = self.session
+        let configuration = ARWorldTrackingConfiguration()
+        configuration.planeDetection = [.horizontal]
+        session.run(configuration)
+        session.delegate = self
+    }
+ ```
+Every ARSession needs a configuration. In our example we'll specity that we're interested in horizontal surfaces. When the ARSession finds surfaces we'll get a callback by registering as a delegare and use those as anchors in our scene. We'll implement three methods to handle the delegate callbacks.
+```
+func session(_ session: ARSession, didAdd anchors: [ARAnchor])
+func session(_ session: ARSession, didUpdate anchors: [ARAnchor])
+func session(_ session: ARSession, didRemove anchors: [ARAnchor])
+```
+When the running ARSession finds horizontal surfaces it'll call the didAdd method with an array of found surfaces/anchors. We'll keep track of the found anchors and also update them along the way. As the ARSession finds out more about the surrounding world it'll modify the anchors/surfaces. Merging them, rotating or making them bigger as the session learns more about the world. The update method will do just that. In this method we'll remake the surface visulizing meshes or adapt the surface to the current world understanding. The didRemove method handles removed surfaces like a surface on a chair that has been moves to another place. In this case we'll remove the visualizer and anchor from our list.
