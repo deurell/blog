@@ -4,7 +4,7 @@ date: 2023-01-03T17:23:40+01:00
 tags: [Swift, RealityKit]
 draft: true
 ---
-I've spent a lot of time learning and writing code based on RealityKit. I really like the framework. It's nicely written, has a lovely tiny, lightweight ECS implementation and makes writing AR applications and games pretty straightforward. I thought I'd write down some things I've learned that might help other AR devs out there in the wild.
+I've spent a lot of time learning and writing code based on RealityKit. I really like the framework. It's nicely written, has a lovely tiny, lightweight ECS implementation and makes writing AR applications and games pretty straightforward. I thought I'd write down some things I've learned in a series of blog posts that might help other AR devs out there in the wild.
 
 The first thing that comes up when writing a new RealityKit app is detecting surfaces in order to anchor virtual objects in the real world. RealityKit has several ways of doing this so I'm going to start there. My first take on this will be to use the way ARKit uses anchors with ARAnchor and show how it relates to anchors like AnchorEntity in RealityKit. Basically we'll roll our own RealityKit AnchorEntity. Entity as in the RealityKit Entity Component System (ECS).
 
