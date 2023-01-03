@@ -6,7 +6,7 @@ draft: true
 ---
 I've spent a lot of time learning and writing code based on RealityKit. I really like the framework. It's nicely written, has a lovely tiny, lightweight ECS implementation and makes writing AR applications and games pretty straightforward. That is if you're able to find some nice documentation or reference projects. That's not a super easy task, so I thought I'd write down some things I've learned that might help other AR devs out there in the wild.
 
-The first thing that comes up when writing a new RealityKit app is detecting surfaces in order to anchor virtual objects in the real world. RealityKit has several ways of doing this so I'm going to start there. My first take on this will be to use the way ARKit uses anchors with ARAnchor and show how it relates to anchors like AnchorEntity in RealityKit. We'll roll our own RealityKit AnchorEntity, a really nice learning experience.
+The first thing that comes up when writing a new RealityKit app is detecting surfaces in order to anchor virtual objects in the real world. RealityKit has several ways of doing this so I'm going to start there. My first take on this will be to use the way ARKit uses anchors with ARAnchor and show how it relates to anchors like AnchorEntity in RealityKit. Basically we'll roll our own RealityKit AnchorEntity.
 
  Starting from ARKit and moving into RealityKit makes easier to understand how RealityKit has evolved over time. In both ARKit and RealityKit we need an ARSession to start with. This ARSession coordinates all the processes that are needed to create an AR experience. Camera control, image analysis and tracking to name a few. The ARSession feeds data to the different renderers like the RealityKit ARView, SceneKit's ARSCNView or SpriteKit's ARSKView. As we're using RealityKit we'll stick to ARView. 
  
@@ -21,7 +21,7 @@ struct ARContainer: UIViewRepresentable {
     func updateUIView(_ uiView: DetectionView, context: Context) {}
 }
 ```
-In this case the DetectionView inherits from ARView and is the view that will register as a delegate for the ARSession callbacks.
+In this case our custom created DetectionView inherits from ARView and is the view that will register as a delegate for the ARSession callbacks.
 
  The ARSession also lets us know when it detects surfaces. We'll use those surfaces to create our anchors. The anchors we find will root our virtual objects in the real world.
  ```
