@@ -2,11 +2,13 @@
 title: "Realitykit Surface Detection"
 date: 2023-01-03T17:23:40+01:00
 tags: [Swift, RealityKit]
-draft: true
+draft: false
 ---
 I've spent a lot of time learning and writing code based on RealityKit. I really like the framework. It's nicely written, has a lovely tiny, lightweight ECS implementation and makes writing AR applications and games pretty straightforward. I thought I'd write down some things I've learned in a series of blog posts that might help other AR devs out there in the wild.
 
-The first thing that comes up when writing a new RealityKit app is detecting surfaces in order to anchor virtual objects in the real world. RealityKit has several ways of doing this so I'm going to start there. My first take on this will be to use the way ARKit uses anchors with ARAnchor and show how it relates to anchors like AnchorEntity in RealityKit. Basically we'll roll our own RealityKit AnchorEntity. Entity as in the RealityKit Entity Component System (ECS).
+The first thing that comes up when writing a new RealityKit app is detecting surfaces in order to anchor virtual objects in the real world. Adding anchors helps optimize world tracking accuracy so that virtual objects stay in place. RealityKit has several ways of doing this so I'm going to start there. My first take on this will be to use the way ARKit uses anchors with ARAnchor and show how it relates to anchors like AnchorEntity in RealityKit. Basically we'll roll our own RealityKit AnchorEntity. Our created anchor will be an entity in the RealityKit Entity Component System (ECS). There are easier ways of doing this in RealityKit but understanding ARKit ARAnchors helped me to understand how anchoring works beneath all abstractions. This is the basic overview:
+
+![overview](/overview.png)
 
  Starting from ARKit and moving into RealityKit makes easier to understand how RealityKit has evolved over time. In both ARKit and RealityKit we need an ARSession to start with. This ARSession coordinates all the processes that are needed to create an AR experience. Camera control, image analysis and tracking to name a few. The ARSession feeds data to the different renderers like the RealityKit ARView, SceneKit's ARSCNView or SpriteKit's ARSKView. As we're using RealityKit we'll stick to ARView. 
  
@@ -41,7 +43,7 @@ func session(_ session: ARSession, didUpdate anchors: [ARAnchor])
 func session(_ session: ARSession, didRemove anchors: [ARAnchor])
 ```
 When the running ARSession finds new horizontal surfaces it'll call the didAdd method with an array of found surfaces/anchors. We'll keep track of the anchors and also update them along the way. As the ARSession finds out more about the surrounding world it'll modify the anchors/surfaces, merging them, moving, rotating or in other ways adapt them as the session learns more about the surroundings. This is important to remember, they can change any time if we continue to run our ARSession. The update method will handle just that. In this method we'll recreate the visulizing surface mesh for the found anchors or in other ways adapt them to the current world understanding. Making them better align with the real world as we move along. The didRemove method handles removed surfaces, this could be a horizontal surface on a chair that has been moved to another location. In this case we'll remove the surface from our list and delete it.
-
+![dictionary](/arch.png)
 In our DetectionView we'll keep a dictionary with anchor identifiers provided by the ARAnchors in the callback as key and our custom made AnchorEntites as values. The Anchor entities will be used as anchor points in the RealityKit scene, will contain a Model/Mesh displaying the surface and they can host other ECS entities as child objects. 
 ```
 class DetectionView: ARView, ARSessionDelegate {
@@ -100,6 +102,8 @@ class PlaneAnchorEntity: Entity, HasModel, HasAnchoring {
     }
 }
 ```
-The didUpdate function recreates the model surface mesh based on the provided ARAnchor plane size and follows the same pattern as described above. And that's it. We've rolled our own RealityKit Archor entity that can be added to the Scenes anchors array. They can host virtual objects as children and they also display a visualizing mesh using a ModelComponent. There are easier ways of doing anchors in RealityKit but they all use this underlying strategy behind the scenes so this helped me grok the anchor behaviors in RealityKit when I started out.
+The didUpdate function recreates the model surface mesh based on the provided ARAnchor plane size and follows the same pattern as described above. And that's it. We've rolled our own RealityKit Archor entity that can be added to the Scenes anchors array. They can contain virtual objects as children and they also display a mesh using a ModelComponent. There are easier ways of doing anchors in RealityKit but they all use this underlying strategy behind the scenes so this helped me grok the anchor behaviors in RealityKit when I started out.
 
-All the code this blog post is based on is available [here](https://github.com/deurell/SurfaceDetection). Have an excellent AR dev day!
+![app](/surface.gif)
+
+All code for this blog post is available [here](https://github.com/deurell/SurfaceDetection). Have an excellent AR dev day!
