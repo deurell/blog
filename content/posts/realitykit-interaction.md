@@ -4,20 +4,20 @@ date: 2023-02-07T12:47:16+01:00
 tags: [Swift, RealityKit]
 draft: false
 ---
-I once worked on adding support for hands tracking for an existing VR game on the Oculus Quest2. Moving from controllers to just using your hands made me think about interaction design in VR/AR in a new way. The dream scenario would be to just do the same thing as with controllers, but with hands. That would be fast, cheap and fancy, right? Turns out it worked but wasn't very fun, and didn't spark joy. Things that were easy to do with controllers was hard with hands and the other way around. This reminded me of the work I did porting Candy Crush to Windows desktop. Moving from mobile to desktop, from touch to mouse was the same thing. The interaction design needed to change in order to make it feel correct, nice and fun. 
+I once worked on adding support for hands tracking for an existing VR game on the Oculus Quest2. Moving from controllers to just using your hands made me think about interaction design in VR/AR in a new way. The dream scenario would be to just do the same thing as with controllers, but with hands. That would be fast, cheap and fancy, right? Turns out it worked but wasn't very fun, and didn't spark joy. Things that were easy to do with controllers were hard to do with hands and the other way around. This reminded me of the work I did porting Candy Crush to Windows desktop. Moving from mobile to desktop, from touch to mouse was the same thing. The interaction design needed to change in order to make it feel correct, nice and fun.
 
-Now, comparing the work I did on the Oculus Quest2 using hands with running the same kind of scenario in AR on an iPhone requires an interaction model designed for this exact case. It's not using controllers, nor hands so what do you have left? Well, the best I've come up with so far is using the actual device as a controller. Controlling objects in AR using a phone is kida like the final boss of AR interactions. Very hard to make it feel natural and fun.
+Now, comparing the work I did on the Oculus Quest2 using hands with running the same kind of scenario in AR on an iPhone requires an interaction model designed for this exact case. It's not using controllers, nor hands so what do you have left? Well, the best I've come up with so far is using the actual device as a controller. Controlling objects in AR using a phone is kinda like the final boss of AR interactions. Very hard to make it feel natural and fun.
 
 So how could this look?
 
 ![move](/interaction_move.png)
 ![move](/device_move.gif)
 
-To get a better feeling when moving the virtual object we add a tilting behavior. Tilting the device will also tilt the virtual object.
+To get a better feeling of movement when moving the virtual object I added a tilting behavior. Tilting the device will also tilt the virtual object.
 
 ![tilt](/device_tilt.gif)
 
-Turns out this works pretty nice but you need a way to do more precise movement. One solution is to use the iPhone screen as a trackpad controlling the virtual objects movement in the X/Z plane.
+Turns out this works pretty good, but you might need a way to do more precise movement. One solution is to use the iPhone screen as a trackpad controlling the virtual objects movement in the X/Z plane.
 
 ![move](/interaction_pan.png)
 ![trackpad](/device_trackpad.gif)
