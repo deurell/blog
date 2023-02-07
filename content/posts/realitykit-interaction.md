@@ -1,6 +1,7 @@
 ---
 title: "Controlling AR-entities with an iPhone"
 date: 2023-02-07T12:47:16+01:00
+tags: [Swift, RealityKit]
 draft: false
 ---
 I once worked on adding support for hands tracking for an existing VR game on the Oculus Quest2. Moving from controllers to just using your hands made me think about interaction design in VR/AR in a new way. The dream scenario would be to just do the same thing as with controllers, but with hands. That would be fast, cheap and fancy, right? Turns out it worked but wasn't very fun, and didn't spark joy. Things that were easy to do with controllers was hard with hands and the other way around. This reminded me of the work I did porting Candy Crush to Windows desktop. Moving from mobile to desktop, from touch to mouse was the same thing. The interaction design needed to change in order to make it feel correct, nice and fun. 
