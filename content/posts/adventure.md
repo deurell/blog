@@ -2,25 +2,55 @@
 title: "Crafting a Text-Based Adventure Game in Swift"
 date: 2023-08-20T14:19:38+02:00
 draft: false
+tags: [Swift, C++, Tutorial]
 ---
 While working on a project, I found myself crafting a super simple text-based adventure engine. Once the core mechanics were in place, it struck me that this could double as a nice Swift tutorial. So, for those who've fond memories of classics like "Zork" and "Hobbit", join me in recreating that magic. We'll employ JSON to map out our game world and then use Swift to animate our adventures.
 
 ## 1. Our Game's Blueprint: JSON
 
-The game's structure will be described in a structured JSON format:
+The game's structure is described in a structured JSON format. To create a new game we just feed the engine new JSON. It supports rooms, items, and paths:
 
 ```json
 {
-    "startingRoom": 1,
-    "rooms": [
+  "startingRoom": 1,
+  "rooms": [
+    {
+      "id": 1,
+      "description": "You are in a dimly lit stone chamber. The walls are cold to the touch, and the air is damp. To the north, you spot an old wooden door. In the center of the room, there's a mysterious chest that seems to have a keyhole.",
+      "paths": {
+        "north": {
+          "roomID": 2,
+          "isLocked": false
+        }
+      },
+      "items": [
         {
-            "id": 1,
-            "description": "In a mystical forest...",
-            "paths": { "north": { "roomID": 2, "isLocked": false } },
-            "items": []
-        },
-        ...
-    ]
+          "name": "chest",
+          "description": "A large wooden chest with intricate designs. It's locked and seems to need a key.",
+          "useEffects": {
+            "silver key": "The chest unlocks and inside you find treasures beyond your wildest dreams!"
+          }
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "description": "You've entered a small room. It seems like a storage chamber of sorts. Old crates and dusty shelves line the walls. Sunlight pierces through a small crack in the ceiling. On a table in the corner, you notice a shiny silver key.",
+      "paths": {
+        "south": {
+          "roomID": 1,
+          "isLocked": false
+        }
+      },
+      "items": [
+        {
+          "name": "silver key",
+          "description": "A shiny silver key with intricate engravings on it.",
+          "useEffects": {}
+        }
+      ]
+    }
+  ]
 }
 ```
 
@@ -100,7 +130,7 @@ This function checks if a particular item in the player's inventory can be used 
 
 ## 5. Command Parsing Logic
 
-Understanding and executing player's commands is crucial. Here's a look at the parsing logic:
+Understanding and executing player's commands is the simple brain of the game. Since this is a simple engine there won't be a fancy command implementation. Just the code that felt fun and right when I typed it. Here's a look at the parsing logic:
 
 ```swift
 func handleCommand(_ command: String) {
@@ -142,3 +172,7 @@ func handleCommand(_ command: String) {
 By melding the principles of Swift with the nostalgia of text-based games, you've created a fresh adventure. Now, armed with this foundation, you can craft even more intricate worlds and narratives. Enjoy your coding journey!
 
 You can find all code for this adventure [here](https://github.com/deurell/adventure).
+
+Oh... And since I've spent a lifetime writing C++, here's a C++ version of the same [game](https://github.com/deurell/simple_adventure). It uses modern C++ in a way i like and the excellent [nlohmann/json parser](https://github.com/nlohmann/json) for super easy JSON functionality. Always interesting to see the differences between the two implementations.
+
+![Adventure](/adventure.png)
