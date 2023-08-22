@@ -181,8 +181,8 @@ func handleCommand(_ rawCommand: String) {
 ## Conclusion
 By melding the principles of Swift with the nostalgia of text-based games, you've created a fresh adventure. Now, armed with this foundation, you can craft even more intricate worlds and narratives. Enjoy your coding journey!
 
-You can find all code for this adventure [here](https://github.com/deurell/adventure) packaged as a SPM package ready for coding in VSCode or XCode!
+You can find all code for this adventure [here](https://github.com/deurell/swiftadventure) packaged as a SPM package ready for coding in VSCode or XCode!
 
-Oh... And since I've spent a lifetime writing C++, here's a C++ version of the same [game](https://github.com/deurell/swiftadventure). It uses modern C++ in a way i like and the excellent [nlohmann/json parser](https://github.com/nlohmann/json) for super easy JSON functionality. Always interesting to see the differences between the two implementations.
+Oh... And since I've spent a lifetime writing C++, here's a C++ version of the same [game](https://github.com/deurell/simple_adventure). It uses modern C++ in a way i like and the excellent [nlohmann/json parser](https://github.com/nlohmann/json) for super easy JSON functionality. Always interesting to see the differences between the two implementations.
 
 ![Adventure](/adventure.png)
