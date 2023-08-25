@@ -105,7 +105,7 @@ As the game's complexity grew, so did the intricacies of the prototype. Maintena
 
 - **Scalability**: The revamped structure is primed for expansion.
 - **Maintainability**: Debugging is simplified, and feature integration is streamlined.
-- **Clarity**: The code's readability has been enhanced, making it a developer's delight.
+- **Clarity**: The code's readability has been enhanced.
 
 ### **5. Diving into the Swift Package Manager (SPM)**
 
